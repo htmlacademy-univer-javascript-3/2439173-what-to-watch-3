@@ -1,9 +1,12 @@
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
-import HeaderLogo from '../../components/logo/header_logo';
+import Logo from '../../components/logo/logo';
 
 function Film(): JSX.Element {
   return (
     <div>
+      <Helmet><title>About film</title></Helmet>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
@@ -13,7 +16,7 @@ function Film(): JSX.Element {
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header film-card__head">
-            <HeaderLogo/>
+            <Logo className={'logo__link'}/>
             <ul className="user-block">
               <li className="user-block__item">
                 <div className="user-block__avatar">
@@ -48,7 +51,7 @@ function Film(): JSX.Element {
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+                <Link to="add-review.html" className="btn film-card__button">Add review</Link>
               </div>
             </div>
           </div>
