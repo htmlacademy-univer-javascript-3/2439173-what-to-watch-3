@@ -1,13 +1,14 @@
-import HeaderLogo from '../../components/logo/header_logo';
+import { Helmet } from 'react-helmet-async';
+import Logo from '../../components/logo/logo';
 import Footer from '../../components/footer/footer';
 
 function MyList(): JSX.Element {
   return(
     <div>
+      <Helmet><title>My film list</title></Helmet>
       <div className="user-page">
         <header className="page-header user-page__head">
-          <HeaderLogo />
-
+          <Logo className={'logo__link'}/>
           <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
           <ul className="user-block">
             <li className="user-block__item">

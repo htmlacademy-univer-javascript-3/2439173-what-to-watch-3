@@ -1,6 +1,7 @@
+import { Helmet } from 'react-helmet-async';
 import CatalogFilmCard from '../../components/catalog-film-card/catalog-film-card';
 import Footer from '../../components/footer/footer';
-import HeaderLogo from '../../components/logo/header_logo';
+import Logo from '../../components/logo/logo';
 
 type MainPageProps = {
   promoFilmTitle: string;
@@ -11,6 +12,7 @@ type MainPageProps = {
 function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps): JSX.Element{
   return (
     <div>
+      <Helmet><title>Main</title></Helmet>
       <section className="film-card">
         <div className="film-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg"
@@ -19,7 +21,7 @@ function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header film-card__head">
-          <HeaderLogo/>
+          <Logo className={'logo__link'}/>
           <ul className="user-block">
             <li className="user-block__item">
               <div className="user-block__avatar">
@@ -75,52 +77,52 @@ function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps
 
           <ul className="catalog__genres-list">
             <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 All genres
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Comedies
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Crime
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Documentary
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Dramas
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Horror
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Kids & Family
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Romance
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Sci-Fi
               </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="mainPage#" className="catalog__genres-link">
+              <a href="main-page#" className="catalog__genres-link">
                 Thrillers
               </a>
             </li>
