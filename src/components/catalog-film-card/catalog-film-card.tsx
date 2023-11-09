@@ -1,28 +1,29 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
+import { useState } from 'react';
+import PreviewPlayer from '../preview-player/preview-player';
 
 
 export type PropsCatalogFilmCard = {
   id: number;
   name: string;
   imgSrc: string;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
+  videoSrc: string;
 }
 
-function CatalogFilmCard({ id, name, imgSrc, onMouseEnter, onMouseLeave }: PropsCatalogFilmCard): JSX.Element {
+function CatalogFilmCard({ id, name, imgSrc, videoSrc}: PropsCatalogFilmCard): JSX.Element {
+  const [isHovered, setIsHovered] = useState(false);
   return(
     <article
       className="small-film-card catalog__films-card"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="small-film-card__image">
-        <img
-          src={imgSrc}
-          alt={name}
-          width={280}
-          height={175}
+        <PreviewPlayer
+          poster={imgSrc}
+          videoSrc={videoSrc}
+          isHovered={isHovered}
         />
       </div>
       <h3 className="small-film-card__title">
