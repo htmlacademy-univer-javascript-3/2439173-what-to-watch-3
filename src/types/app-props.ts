@@ -7,7 +7,7 @@ export type AppProps = {
     promoFilmGenre: string;
     promoFilmYear: number;
     filmsProps: FilmType[];
-    reviewProps: ReviewType;
+    reviewProps: ReviewType[];
     playerProps: PlayerType;
 
   }

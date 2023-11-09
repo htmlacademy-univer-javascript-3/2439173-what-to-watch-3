@@ -2,16 +2,14 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useState } from 'react';
 import PreviewPlayer from '../preview-player/preview-player';
+import { FilmType } from '../../types/film';
 
 
 export type PropsCatalogFilmCard = {
-  id: number;
-  name: string;
-  imgSrc: string;
-  videoSrc: string;
+  film: FilmType;
 }
 
-function CatalogFilmCard({ id, name, imgSrc, videoSrc}: PropsCatalogFilmCard): JSX.Element {
+function CatalogFilmCard({film}: PropsCatalogFilmCard): JSX.Element {
   const [isHovered, setIsHovered] = useState(false);
   return(
     <article
@@ -21,14 +19,14 @@ function CatalogFilmCard({ id, name, imgSrc, videoSrc}: PropsCatalogFilmCard): J
     >
       <div className="small-film-card__image">
         <PreviewPlayer
-          poster={imgSrc}
-          videoSrc={videoSrc}
+          poster={film.imgSrc}
+          videoSrc={film.videoSrc}
           isHovered={isHovered}
         />
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={AppRoute.Film(id)}>
-          {name}
+        <Link className="small-film-card__link" to={AppRoute.Film(film.id)}>
+          {film.name}
         </Link>
       </h3>
     </article>

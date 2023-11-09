@@ -1,9 +1,9 @@
-import { PropsCatalogFilmCard } from '../catalog-film-card/catalog-film-card';
 import CatalogFilmCard from '../catalog-film-card/catalog-film-card';
+import { FilmType } from '../../types/film';
 
 
 type FilmCardListProps = {
-    films: PropsCatalogFilmCard[];
+    films: FilmType[];
   };
 
 function FilmCardList({ films }: FilmCardListProps): JSX.Element {
@@ -12,7 +12,7 @@ function FilmCardList({ films }: FilmCardListProps): JSX.Element {
       {films.map((film) => (
         <CatalogFilmCard
           key={film.id}
-          {...film}
+          film={film}
         />
       ))}
     </div>

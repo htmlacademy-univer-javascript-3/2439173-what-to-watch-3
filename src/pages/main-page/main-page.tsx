@@ -2,13 +2,13 @@ import { Helmet } from 'react-helmet-async';
 import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
 import FilmCardList from '../../components/film-card-list/film-card-list';
-import { PropsCatalogFilmCard } from '../../components/catalog-film-card/catalog-film-card';
+import { FilmType } from '../../types/film';
 
 type MainPageProps = {
   promoFilmTitle: string;
   promoFilmGenre: string;
   promoFilmYear: number;
-  filmsProps: PropsCatalogFilmCard[];
+  filmsProps: FilmType[];
 }
 
 function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear, filmsProps}: MainPageProps): JSX.Element{
