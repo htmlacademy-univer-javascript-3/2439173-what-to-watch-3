@@ -2,11 +2,11 @@ import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
 import Footer from '../../components/footer/footer';
 import FilmCardList from '../../components/film-card-list/film-card-list';
-import { PropsCatalogFilmCard } from '../../components/catalog-film-card/catalog-film-card';
+import { FilmType } from '../../types/film';
 
 
 export type MyListPageProps = {
-  films: PropsCatalogFilmCard[];
+  films: FilmType[];
 };
 
 function MyList({films}: MyListPageProps): JSX.Element {

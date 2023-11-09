@@ -3,22 +3,20 @@ import { Link } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import AddReviewForm from '../../components/add-review-form/add-review-form';
 import { AppRoute } from '../../const';
+import { FilmType } from '../../types/film';
 
 export type PropsAddReview = {
-  id: number;
-  name: string;
-  imgSrc: string;
-  bgImgSrc: string;
+  film: FilmType;
 };
 
-function AddReview({id, name, imgSrc, bgImgSrc}: PropsAddReview): JSX.Element {
+function AddReview({film}: PropsAddReview): JSX.Element {
   return (
     <div>
       <Helmet><title>Add Review</title></Helmet>
       <section className="film-card film-card--full">
         <div className="film-card__header">
           <div className="film-card__bg">
-            <img src={bgImgSrc} alt={name}/>
+            <img src={film.imgSrc} alt={film.name}/>
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header">
@@ -26,8 +24,8 @@ function AddReview({id, name, imgSrc, bgImgSrc}: PropsAddReview): JSX.Element {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <Link to={AppRoute.Film(id)} className="breadcrumbs__link">
-                    {name}
+                  <Link to={AppRoute.Film(film.id)} className="breadcrumbs__link">
+                    {film.name}
                   </Link>
                 </li>
                 <li className="breadcrumbs__item">
@@ -48,8 +46,8 @@ function AddReview({id, name, imgSrc, bgImgSrc}: PropsAddReview): JSX.Element {
           </header>
           <div className="film-card__poster film-card__poster--small">
             <img
-              src={imgSrc}
-              alt={name}
+              src={film.imgSrc}
+              alt={film.name}
               width="218"
               height="327"
             />

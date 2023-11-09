@@ -19,8 +19,8 @@ function App(props: AppProps): JSX.Element {
         <Routes>
           <Route path={AppRoute.Main} element={<MainPage {...props} />} />
           <Route path={AppRoute.SignIn} element={<SignIn />} />
-          <Route path={AppRoute.Film(':id')} element={<Film />} />
-          <Route path={AppRoute.AddReview(':id')} element={<AddReview {...props.reviewProps} />} />
+          <Route path={AppRoute.Film(':id')} element={<Film film={props.filmsProps[0]} />} />
+          <Route path={AppRoute.AddReview(':id')} element={<AddReview film={props.filmsProps[0]} />} />
           <Route
             path={AppRoute.MyList}
             element={

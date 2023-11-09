@@ -1,6 +1,11 @@
+export type InnerReviewType = {
+    author: string;
+    text: string;
+    date: Date;
+    rating: string;
+}
+
 export type ReviewType = {
     id: number;
-    name: string;
-    imgSrc: string;
-    bgImgSrc: string;
+    reviews: InnerReviewType[];
 }
