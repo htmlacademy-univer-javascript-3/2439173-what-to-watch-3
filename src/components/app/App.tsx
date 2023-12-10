@@ -11,7 +11,6 @@ import Player from '../../pages/player/player';
 import SignIn from '../../pages/sign-in/sign-in';
 import { AppProps } from '../../types/app-props';
 
-
 function App(props: AppProps): JSX.Element {
   return (
     <HelmetProvider>

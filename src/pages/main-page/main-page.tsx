@@ -2,16 +2,21 @@ import { Helmet } from 'react-helmet-async';
 import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
 import FilmCardList from '../../components/film-card-list/film-card-list';
-import { FilmType } from '../../types/film';
+import GenreList from '../../components/genres/genre-list';
+import { useAppSelector} from '../../components/hooks';
+import { filterFilmsGenre, extractAllGenres} from '../../help-functions/filter-films-genre';
+
 
 type MainPageProps = {
   promoFilmTitle: string;
   promoFilmGenre: string;
   promoFilmYear: number;
-  filmsProps: FilmType[];
 }
 
-function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear, filmsProps}: MainPageProps): JSX.Element{
+function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps): JSX.Element{
+  const { allFilms, currentGenre } = useAppSelector((state) => state);
+  const films = filterFilmsGenre(allFilms, currentGenre);
+  const genres = extractAllGenres(allFilms);
   return (
     <div>
       <Helmet><title>Main</title></Helmet>
@@ -77,59 +82,8 @@ function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear, filmsProps}: M
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="main-page#" className="catalog__genres-link">
-                All genres
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Comedies
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Crime
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Documentary
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Dramas
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Horror
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Kids & Family
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Romance
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Sci-Fi
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="main-page#" className="catalog__genres-link">
-                Thrillers
-              </a>
-            </li>
-          </ul>
-          <FilmCardList films={filmsProps} />
+          <GenreList genres={genres} activeGenre={currentGenre}/>
+          <FilmCardList films={films} />
           <div className="catalog__more">
             <button className="catalog__button" type="button">
               Show more
