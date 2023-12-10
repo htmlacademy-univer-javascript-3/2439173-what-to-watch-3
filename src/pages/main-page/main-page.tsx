@@ -5,6 +5,8 @@ import FilmCardList from '../../components/film-card-list/film-card-list';
 import GenreList from '../../components/genres/genre-list';
 import { useAppSelector} from '../../components/hooks';
 import { filterFilmsGenre, extractAllGenres} from '../../help-functions/filter-films-genre';
+import { useState, useCallback } from 'react';
+import ShowMoreButton from '../../components/show-more/show-more';
 
 
 type MainPageProps = {
@@ -13,10 +15,17 @@ type MainPageProps = {
   promoFilmYear: number;
 }
 
+const FILMS_ON_PAGE_COUNT = 8;
+
 function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps): JSX.Element{
-  const { allFilms, currentGenre } = useAppSelector((state) => state);
+  const allFilms = useAppSelector((state) => state.allFilms);
+  const currentGenre = useAppSelector((state) => state.currentGenre);
   const films = filterFilmsGenre(allFilms, currentGenre);
   const genres = extractAllGenres(allFilms);
+  const [countFilms, setCountFilms] = useState(FILMS_ON_PAGE_COUNT);
+  const showMoreHandle = useCallback(() => {
+    setCountFilms((prev) => prev + FILMS_ON_PAGE_COUNT);
+  }, [setCountFilms]);
   return (
     <div>
       <Helmet><title>Main</title></Helmet>
@@ -83,12 +92,10 @@ function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreList genres={genres} activeGenre={currentGenre}/>
-          <FilmCardList films={films} />
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">
-              Show more
-            </button>
-          </div>
+          <FilmCardList films={films.slice(0, countFilms)} />
+          {countFilms < films.length && (
+            <ShowMoreButton onClick={showMoreHandle}/>
+          )}
         </section>
         <Footer />
       </div>
