@@ -1,4 +1,4 @@
-import {FilmType} from '../types/film';
+import { FilmType } from '../types/film';
 
 const ALL_GENRES = 'All genre-list';
 
