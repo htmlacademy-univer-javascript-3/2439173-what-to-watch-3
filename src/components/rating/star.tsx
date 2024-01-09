@@ -1,7 +1,7 @@
 type RatingProps = {
   num: number;
   onClick: () => void;
-}
+};
 function Star({ num, onClick }: RatingProps): JSX.Element {
   return (
     <>

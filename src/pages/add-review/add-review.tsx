@@ -9,22 +9,27 @@ export type PropsAddReview = {
   film: FilmType;
 };
 
-function AddReview({film}: PropsAddReview): JSX.Element {
+function AddReview({ film }: PropsAddReview): JSX.Element {
   return (
     <div>
-      <Helmet><title>Add Review</title></Helmet>
+      <Helmet>
+        <title>Add Review</title>
+      </Helmet>
       <section className="film-card film-card--full">
         <div className="film-card__header">
           <div className="film-card__bg">
-            <img src={film.backgroundImage} alt={film.name}/>
+            <img src={film.backgroundImage} alt={film.name} />
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header">
-            <Logo className={'logo__link'}/>
+            <Logo className={'logo__link'} />
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <Link to={AppRoute.Film(film.id)} className="breadcrumbs__link">
+                  <Link
+                    to={AppRoute.Film(film.id)}
+                    className="breadcrumbs__link"
+                  >
                     {film.name}
                   </Link>
                 </li>
@@ -36,7 +41,12 @@ function AddReview({film}: PropsAddReview): JSX.Element {
             <ul className="user-block">
               <li className="user-block__item">
                 <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+                  <img
+                    src="img/avatar.jpg"
+                    alt="User avatar"
+                    width="63"
+                    height="63"
+                  />
                 </div>
               </li>
               <li className="user-block__item">
@@ -53,7 +63,7 @@ function AddReview({film}: PropsAddReview): JSX.Element {
             />
           </div>
         </div>
-        <AddReviewForm/>
+        <AddReviewForm />
       </section>
     </div>
   );
