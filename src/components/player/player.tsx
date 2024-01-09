@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import { FilmType} from '../../types/film';
+import { FilmType } from '../../types/film';
 
 type VideoplayerProps = {
   film: FilmType;

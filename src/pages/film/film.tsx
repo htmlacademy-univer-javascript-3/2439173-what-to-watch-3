@@ -11,35 +11,44 @@ const MAX_RECOMEND_FILM_VALUE = 4;
 
 type PropsFilmPage = {
   films: FilmType[];
-}
+};
 
 function getFilmById(filmId: number): FilmType | undefined {
-  return Array<FilmType>().find<FilmType>((film): film is FilmType => filmId === Number(film.id));
+  return Array<FilmType>().find<FilmType>(
+    (film): film is FilmType => filmId === Number(film.id),
+  );
 }
 
-function Film({films}: PropsFilmPage): JSX.Element {
+function Film({ films }: PropsFilmPage): JSX.Element {
   const currentFilmId = useParams().id;
   const currentFilm = getFilmById(Number(currentFilmId));
   if (currentFilm === undefined) {
-    return <NotFoundPage/>;
+    return <NotFoundPage />;
   }
   return (
     <div>
-      <Helmet><title>About film</title></Helmet>
+      <Helmet>
+        <title>About film</title>
+      </Helmet>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={currentFilm.backgroundImage} alt={currentFilm.name}/>
+            <img src={currentFilm.backgroundImage} alt={currentFilm.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header film-card__head">
-            <Logo className={'logo__link'}/>
+            <Logo className={'logo__link'} />
             <ul className="user-block">
               <li className="user-block__item">
                 <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+                  <img
+                    src="img/avatar.jpg"
+                    alt="User avatar"
+                    width="63"
+                    height="63"
+                  />
                 </div>
               </li>
               <li className="user-block__item">
@@ -57,20 +66,28 @@ function Film({films}: PropsFilmPage): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button
+                  className="btn btn--play film-card__button"
+                  type="button"
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
+                <button
+                  className="btn btn--list film-card__button"
+                  type="button"
+                >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <Link to="add-review.html" className="btn film-card__button">Add review</Link>
+                <Link to="add-review.html" className="btn film-card__button">
+                  Add review
+                </Link>
               </div>
             </div>
           </div>
@@ -86,14 +103,19 @@ function Film({films}: PropsFilmPage): JSX.Element {
                 height="327"
               />
             </div>
-            <Tabs film={currentFilm}/>
+            <Tabs film={currentFilm} />
           </div>
         </div>
       </section>
 
       <div className="page-content">
         <MoreLikeThis
-          films={films.filter((film) => film !== currentFilm && film.genre === currentFilm.genre).slice(0, MAX_RECOMEND_FILM_VALUE)}
+          films={films
+            .filter(
+              (film) =>
+                film !== currentFilm && film.genre === currentFilm.genre,
+            )
+            .slice(0, MAX_RECOMEND_FILM_VALUE)}
         />
         <Footer />
       </div>

@@ -1,6 +1,6 @@
-import {createReducer} from '@reduxjs/toolkit';
-import {FilmType} from '../types/film';
-import {setFilmLoadingStatus, setFilms, setGenre} from './action';
+import { createReducer } from '@reduxjs/toolkit';
+import { FilmType } from '../types/film';
+import { setFilmLoadingStatus, setFilms, setGenre } from './action';
 
 type state = {
   currentGenre: string;
@@ -8,7 +8,7 @@ type state = {
   isFilmLoading: boolean;
 };
 
-const f : FilmType[] = [];
+const f: FilmType[] = [];
 const initialState: state = {
   currentGenre: 'All genre-list',
   films: f,

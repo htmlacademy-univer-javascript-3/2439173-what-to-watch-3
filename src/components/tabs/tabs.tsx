@@ -42,11 +42,7 @@ const Tabs = ({ film }: TabsProps) => {
               }`}
               onClick={() => setTitleNav(nav.title)}
             >
-              <a
-                className="film-nav__link"
-              >
-                {nav.title}
-              </a>
+              <a className="film-nav__link">{nav.title}</a>
             </li>
           ))}
         </ul>

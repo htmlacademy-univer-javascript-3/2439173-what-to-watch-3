@@ -11,8 +11,13 @@ const dateToString = function (date: Date) {
   return `${month} ${day}, ${year}`;
 };
 
-function ReviewItem({text, date, author, rating}: InnerReviewType): JSX.Element{
-  return(
+function ReviewItem({
+  text,
+  date,
+  author,
+  rating,
+}: InnerReviewType): JSX.Element {
+  return (
     <div className="review">
       <blockquote className="review__quote">
         {text && <p className="review__text">{text}</p>}
@@ -36,18 +41,19 @@ function ReviewItem({text, date, author, rating}: InnerReviewType): JSX.Element{
 }
 
 export type PropsReviewTab = {
-    film: FilmType;
-}
+  film: FilmType;
+};
 
-function ReviewsTab({ film }: PropsReviewTab): JSX.Element{
-  const reviewsList = REVIEWS.filter(({ id }) => id === Number(film.id))[0].reviews;
+function ReviewsTab({ film }: PropsReviewTab): JSX.Element {
+  const reviewsList = REVIEWS.filter(({ id }) => id === Number(film.id))[0]
+    .reviews;
   const reviewsListFirstColumn = reviewsList.slice(0, reviewsList.length / 2);
   const reviewsListSecondColumn = reviewsList.slice(
     reviewsList.length / 2,
     reviewsList.length,
   );
 
-  return(
+  return (
     reviewsList && (
       <div className="film-card__reviews film-card__row">
         {reviewsListFirstColumn && (

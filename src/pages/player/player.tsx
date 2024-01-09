@@ -1,22 +1,38 @@
 import { Helmet } from 'react-helmet-async';
-import {FilmType} from '../../types/film';
+import { FilmType } from '../../types/film';
 
 export type PropsPlayerPage = {
   film: FilmType;
 };
 
 function Player(props: PropsPlayerPage): JSX.Element {
-  return(
+  return (
     <div>
-      <Helmet><title>Movie Player</title></Helmet>
+      <Helmet>
+        <title>Movie Player</title>
+      </Helmet>
       <div className="player">
-        <video src={props.film.videoLink} className="player__video" poster="img/player-poster.jpg"></video>
-        <button type="button" className="player__exit">Exit</button>
+        <video
+          src={props.film.videoLink}
+          className="player__video"
+          poster="img/player-poster.jpg"
+        >
+        </video>
+        <button type="button" className="player__exit">
+          Exit
+        </button>
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value="30" max="100"></progress>
-              <div className="player__toggler" style={{'left': '30%'}}>Toggler</div>
+              <progress
+                className="player__progress"
+                value="30"
+                max="100"
+              >
+              </progress>
+              <div className="player__toggler" style={{ left: '30%' }}>
+                Toggler
+              </div>
             </div>
             <div className="player__time-value">1:30:29</div>
           </div>
