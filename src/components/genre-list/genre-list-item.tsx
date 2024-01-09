@@ -1,4 +1,4 @@
-import { useAppDispatch} from '../../components/hooks';
+import { useAppDispatch} from '../hooks';
 import { setGenre } from '../../store/action';
 
 type GenreListItemProps = {
@@ -14,7 +14,7 @@ function GenreListItem({genre, isActive}: GenreListItemProps): JSX.Element {
         isActive ? 'catalog__genres-item--active' : ''
       }`}
     >
-      <a href="main-page#"
+      <a href="src/pages/main-page/main-page#"
         className="catalog__genres-link"
         onClick={(event) => {
           event.preventDefault();

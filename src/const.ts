@@ -13,8 +13,3 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
-export const PromoFilm = {
-  PromoFilmTitle: 'The Grand Budapest Hotel',
-  PromoFilmGenre: 'Drama',
-  PromoFilmYear: 2014
-};

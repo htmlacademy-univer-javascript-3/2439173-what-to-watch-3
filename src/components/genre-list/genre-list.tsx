@@ -1,4 +1,4 @@
-import GenreListItem from '../../pages/main-page/genre-list-item';
+import GenreListItem from './genre-list-item';
 
 type GenresListProps = {
   genres: string[];

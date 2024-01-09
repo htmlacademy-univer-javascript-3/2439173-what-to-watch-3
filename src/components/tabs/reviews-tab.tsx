@@ -1,5 +1,5 @@
 import { InnerReviewType } from '../../types/review';
-import { REVIEW } from '../../mocks/reviews';
+import { REVIEWS } from '../../mocks/reviews';
 import { FilmType } from '../../types/film';
 
 const dateToString = function (date: Date) {
@@ -40,7 +40,7 @@ export type PropsReviewTab = {
 }
 
 function ReviewsTab({ film }: PropsReviewTab): JSX.Element{
-  const reviewsList = REVIEW.filter(({ id }) => id === film.id)[0].reviews;
+  const reviewsList = REVIEWS.filter(({ id }) => id === Number(film.id))[0].reviews;
   const reviewsListFirstColumn = reviewsList.slice(0, reviewsList.length / 2);
   const reviewsListSecondColumn = reviewsList.slice(
     reviewsList.length / 2,

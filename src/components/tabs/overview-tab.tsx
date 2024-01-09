@@ -1,43 +1,46 @@
 import { FilmType } from '../../types/film';
 
+const BAD_RATING = 3;
+const NORMAL_RATING = 5;
+const GOOD_RATING = 8;
+const VERY_GOOD_RATING = 10;
+
+
 type PropsOverviewTab = {
     film: FilmType;
 };
 
-const getNameRating = function (rating: string) {
-  const ratingNumber = parseFloat(rating.replace(',', '.'));
-  switch (true) {
-    case ratingNumber > 8:
-      return 'Very good';
-    default:
-      return '';
+function getRatingLevel(rating: number): string {
+  if (rating < BAD_RATING) {
+    return 'Bad';
   }
-};
+  if (rating < NORMAL_RATING) {
+    return 'Normal';
+  }
+  if (rating < GOOD_RATING) {
+    return 'Good';
+  }
+  if (rating < VERY_GOOD_RATING) {
+    return 'Very good';
+  }
+  return 'Awesome';
+}
 
-const MAX_NAMES_WITHOUT_ETC = 4;
-const starringToStringRow = function (starring: string[]) {
-  return starring
-    .slice(0, Math.min(MAX_NAMES_WITHOUT_ETC, starring.length))
-    .join(', ')
-    .concat(starring.length > MAX_NAMES_WITHOUT_ETC ? ' and other' : '');
-};
-
-function OverviewTab({film}: PropsOverviewTab): JSX.Element{
+function OverviewTab(props: PropsOverviewTab): JSX.Element{
+  const {film} = props;
   return(
     <>
       <div className="film-rating">
         <div className="film-rating__score">{film.rating ? film.rating : '0'}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">{getNameRating(film.rating ? film.rating : '0')}</span>
-          <span className="film-rating__count">{film.ratingCount ? film.ratingCount : '0 ratings'}</span>
+          <span className="film-rating__level">{getRatingLevel(film.rating)}</span>
+          <span className="film-rating__count">{film.scoresCount ? film.scoresCount : '0 ratings'}</span>
         </p>
       </div>
       <div className="film-card__text">
-        {film.annotation?.map((annotationItem, index) => (
-          <p key={`key_${film.name}_annotation_${index + 1}`}>
-            {annotationItem}
-          </p>
-        ))}
+        <p>
+          {film.description}
+        </p>
         {film.director && (
           <p className="film-card__director">
             <strong>Director: {film.director}</strong>
@@ -45,7 +48,7 @@ function OverviewTab({film}: PropsOverviewTab): JSX.Element{
         )}
         {film.starring && (
           <p className="film-card__starring">
-            <strong>Starring: {starringToStringRow(film.starring)}</strong>
+            <strong>Starring: {film.starring.join(', ')} and other</strong>
           </p>
         )}
       </div>
