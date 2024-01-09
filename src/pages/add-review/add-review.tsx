@@ -16,7 +16,7 @@ function AddReview({film}: PropsAddReview): JSX.Element {
       <section className="film-card film-card--full">
         <div className="film-card__header">
           <div className="film-card__bg">
-            <img src={film.imgSrc} alt={film.name}/>
+            <img src={film.backgroundImage} alt={film.name}/>
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header">
@@ -46,7 +46,7 @@ function AddReview({film}: PropsAddReview): JSX.Element {
           </header>
           <div className="film-card__poster film-card__poster--small">
             <img
-              src={film.imgSrc}
+              src={film.posterImage}
               alt={film.name}
               width="218"
               height="327"

@@ -1,6 +1,6 @@
 import {FilmType} from '../types/film';
 
-const ALL_GENRES = 'All genres';
+const ALL_GENRES = 'All genre-list';
 
 export const filterFilmsGenre = (
   films: FilmType[],

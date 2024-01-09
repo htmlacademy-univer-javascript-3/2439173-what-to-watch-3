@@ -1,29 +1,35 @@
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
 import Tabs from '../../components/tabs/tabs';
-import { FILMS } from '../../mocks/films';
 import { FilmType } from '../../types/film';
 import MoreLikeThis from '../../components/more-like-this/more-like-this';
+import NotFoundPage from '../not-found-page/not-found-page';
 
 const MAX_RECOMEND_FILM_VALUE = 4;
 
 type PropsFilmPage = {
-  film: FilmType;
+  films: FilmType[];
 }
 
-function Film({film}: PropsFilmPage): JSX.Element {
-  const moreLikeFilms = FILMS
-    .filter(({ genre, id }) => film && film.genre && genre && film.id !== id)
-    .slice(0, MAX_RECOMEND_FILM_VALUE);
+function getFilmById(filmId: number): FilmType | undefined {
+  return Array<FilmType>().find<FilmType>((film): film is FilmType => filmId === Number(film.id));
+}
+
+function Film({films}: PropsFilmPage): JSX.Element {
+  const currentFilmId = useParams().id;
+  const currentFilm = getFilmById(Number(currentFilmId));
+  if (currentFilm === undefined) {
+    return <NotFoundPage/>;
+  }
   return (
     <div>
       <Helmet><title>About film</title></Helmet>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={film.bgImgSrc} alt={film.name}/>
+            <img src={currentFilm.backgroundImage} alt={currentFilm.name}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -44,10 +50,10 @@ function Film({film}: PropsFilmPage): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{film.name}</h2>
+              <h2 className="film-card__title">{currentFilm.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{film.genre}</span>
-                <span className="film-card__year">{film.releaseDate}</span>
+                <span className="film-card__genre">{currentFilm.genre}</span>
+                <span className="film-card__year">{currentFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -74,19 +80,21 @@ function Film({film}: PropsFilmPage): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img
-                src={film.imgSrc}
-                alt={film.name}
+                src={currentFilm.posterImage}
+                alt={currentFilm.name}
                 width="218"
                 height="327"
               />
             </div>
-            <Tabs film={film}/>
+            <Tabs film={currentFilm}/>
           </div>
         </div>
       </section>
 
       <div className="page-content">
-        <MoreLikeThis films={moreLikeFilms}/>
+        <MoreLikeThis
+          films={films.filter((film) => film !== currentFilm && film.genre === currentFilm.genre).slice(0, MAX_RECOMEND_FILM_VALUE)}
+        />
         <Footer />
       </div>
     </div>

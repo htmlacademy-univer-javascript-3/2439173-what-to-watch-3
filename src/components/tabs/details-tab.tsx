@@ -42,10 +42,10 @@ function DetailsTab({film}: PropsDetailsTab): JSX.Element {
             <span className="film-card__details-value">{film.genre}</span>
           </p>
         )}
-        {film.releaseDate && (
+        {film.released && (
           <p className="film-card__details-item">
             <strong className="film-card__details-name">Released</strong>
-            <span className="film-card__details-value">{film.releaseDate}</span>
+            <span className="film-card__details-value">{film.released}</span>
           </p>
         )}
       </div>

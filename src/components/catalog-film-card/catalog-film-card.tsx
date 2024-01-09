@@ -19,8 +19,8 @@ function CatalogFilmCard({film}: PropsCatalogFilmCard): JSX.Element {
     >
       <div className="small-film-card__image">
         <PreviewPlayer
-          poster={film.imgSrc}
-          videoSrc={film.videoSrc}
+          poster={film.posterImage}
+          videoSrc={film.previewVideoLink}
           isHovered={isHovered}
         />
       </div>

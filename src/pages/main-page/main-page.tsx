@@ -2,23 +2,22 @@ import { Helmet } from 'react-helmet-async';
 import Footer from '../../components/footer/footer';
 import Logo from '../../components/logo/logo';
 import FilmCardList from '../../components/film-card-list/film-card-list';
-import GenreList from '../../components/genres/genre-list';
+import GenreList from '../../components/genre-list/genre-list';
 import { useAppSelector} from '../../components/hooks';
 import { filterFilmsGenre, extractAllGenres} from '../../help-functions/filter-films-genre';
 import { useState, useCallback } from 'react';
 import ShowMoreButton from '../../components/show-more/show-more';
+import {FilmType} from '../../types/film';
 
 
 type MainPageProps = {
-  promoFilmTitle: string;
-  promoFilmGenre: string;
-  promoFilmYear: number;
+  selectedFilm: FilmType;
 }
 
 const FILMS_ON_PAGE_COUNT = 8;
 
-function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps): JSX.Element{
-  const allFilms = useAppSelector((state) => state.allFilms);
+function MainPage({selectedFilm}: MainPageProps): JSX.Element{
+  const allFilms = useAppSelector((state) => state.films);
   const currentGenre = useAppSelector((state) => state.currentGenre);
   const films = filterFilmsGenre(allFilms, currentGenre);
   const genres = extractAllGenres(allFilms);
@@ -63,10 +62,10 @@ function MainPage({promoFilmTitle, promoFilmGenre, promoFilmYear}: MainPageProps
               />
             </div>
             <div className="film-card__desc">
-              <h2 className="film-card__title">{promoFilmTitle}</h2>
+              <h2 className="film-card__title">{selectedFilm.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{promoFilmGenre}</span>
-                <span className="film-card__year">{promoFilmYear}</span>
+                <span className="film-card__genre">{selectedFilm.genre}</span>
+                <span className="film-card__year">{selectedFilm.released}</span>
               </p>
               <div className="film-card__buttons">
                 <button className="btn btn--play film-card__button" type="button">
