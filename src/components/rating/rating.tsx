@@ -6,7 +6,7 @@ type RatingProps = {
   onClick: (value: number) => void;
 };
 function Rating({ onClick }: RatingProps): JSX.Element {
-  return(
+  return (
     <div className="rating">
       <div className="rating__stars">
         {Array.from(Array(MAX_RATING).keys()).map((i) => (

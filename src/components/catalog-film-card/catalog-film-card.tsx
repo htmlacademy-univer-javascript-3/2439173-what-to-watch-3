@@ -4,14 +4,13 @@ import { useState } from 'react';
 import PreviewPlayer from '../preview-player/preview-player';
 import { FilmType } from '../../types/film';
 
-
 export type PropsCatalogFilmCard = {
   film: FilmType;
-}
+};
 
-function CatalogFilmCard({film}: PropsCatalogFilmCard): JSX.Element {
+function CatalogFilmCard({ film }: PropsCatalogFilmCard): JSX.Element {
   const [isHovered, setIsHovered] = useState(false);
-  return(
+  return (
     <article
       className="small-film-card catalog__films-card"
       onMouseEnter={() => setIsHovered(true)}

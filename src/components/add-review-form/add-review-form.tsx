@@ -2,8 +2,8 @@ import Rating from '../rating/rating';
 import { useCallback, useState } from 'react';
 
 export type PropsAddReviewForm = {
-    rating: number;
-    comment: string;
+  rating: number;
+  comment: string;
 };
 
 function AddReviewForm(): JSX.Element {
@@ -19,7 +19,7 @@ function AddReviewForm(): JSX.Element {
     [setReviewForm],
   );
 
-  return(
+  return (
     <div className="add-review">
       <form action="#" className="add-review__form">
         <Rating
@@ -44,7 +44,7 @@ function AddReviewForm(): JSX.Element {
           />
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">
-                    Post
+              Post
             </button>
           </div>
         </div>

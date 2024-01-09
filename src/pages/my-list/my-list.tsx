@@ -4,23 +4,31 @@ import Footer from '../../components/footer/footer';
 import FilmCardList from '../../components/film-card-list/film-card-list';
 import { FilmType } from '../../types/film';
 
-
 export type MyListPageProps = {
   films: FilmType[];
 };
 
-function MyList({films}: MyListPageProps): JSX.Element {
-  return(
+function MyList({ films }: MyListPageProps): JSX.Element {
+  return (
     <div>
-      <Helmet><title>My film list</title></Helmet>
+      <Helmet>
+        <title>My film list</title>
+      </Helmet>
       <div className="user-page">
         <header className="page-header user-page__head">
-          <Logo className={'logo__link'}/>
-          <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
+          <Logo className={'logo__link'} />
+          <h1 className="page-title user-page__title">
+            My list <span className="user-page__film-count">9</span>
+          </h1>
           <ul className="user-block">
             <li className="user-block__item">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+                <img
+                  src="img/avatar.jpg"
+                  alt="User avatar"
+                  width="63"
+                  height="63"
+                />
               </div>
             </li>
             <li className="user-block__item">
@@ -31,7 +39,7 @@ function MyList({films}: MyListPageProps): JSX.Element {
 
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <FilmCardList films={films}/>
+          <FilmCardList films={films} />
         </section>
         <Footer />
       </div>

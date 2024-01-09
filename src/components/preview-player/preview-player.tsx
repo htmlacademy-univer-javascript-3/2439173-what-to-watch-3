@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
-export type PropsPreviewPlayer= {
-    poster: string;
-    videoSrc: string;
-    isHovered: boolean;
-  };
+export type PropsPreviewPlayer = {
+  poster: string;
+  videoSrc: string;
+  isHovered: boolean;
+};
 
-function PreviewPlayer({poster, videoSrc, isHovered}: PropsPreviewPlayer): JSX.Element {
+function PreviewPlayer({
+  poster,
+  videoSrc,
+  isHovered,
+}: PropsPreviewPlayer): JSX.Element {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   useEffect(() => {
@@ -31,7 +35,7 @@ function PreviewPlayer({poster, videoSrc, isHovered}: PropsPreviewPlayer): JSX.E
         videoRef.current?.load();
       }
     }
-  },[isPlaying]);
+  }, [isPlaying]);
   return (
     <video
       ref={videoRef}

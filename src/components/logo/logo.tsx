@@ -3,7 +3,7 @@ import { AppRoute } from '../../const';
 
 type LogoProps = {
   className: string;
-}
+};
 
 function Logo({ className }: LogoProps): JSX.Element {
   return (
